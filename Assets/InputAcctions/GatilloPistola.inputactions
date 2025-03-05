@@ -1,0 +1,78 @@
+{
+    "name": "GatilloPistola",
+    "maps": [
+        {
+            "name": "Mapa1",
+            "id": "559b366a-95ff-4c34-b2c6-33e78c46e461",
+            "actions": [
+                {
+                    "name": "Disparar",
+                    "type": "Button",
+                    "id": "41319eed-ac0b-4b13-a310-dce06638c8c0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5b38fa70-e2db-4fc7-8477-ec83f0d61785",
+                    "path": "<OpenVRControllerIndex>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0412e7b8-8f5b-4fb2-b90e-828c92f08448",
+                    "path": "<OpenVRControllerIndex>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64a6dcb8-8bce-45a0-8ac6-fe4f9bab6d51",
+                    "path": "<OpenVRControllerWMR>{LeftHand}/{TriggerTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85aabd1f-bd3f-4f43-9945-78c739e6c138",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b4de18c-3bde-41df-9d8d-2d0df5c22b51",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
