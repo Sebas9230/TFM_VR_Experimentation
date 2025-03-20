@@ -7,3 +7,33 @@ Spawned object 2: ObjetivoRea2
 Reacction time: 2.07937 seconds
 
 Spawned object 3: ObjetivoRea4
+Spawned object 1: ObjetivoRea5
+Manual despawn
+
+Spawned object 2: ObjetivoRea1
+Manual despawn
+
+Spawned object 3: ObjetivoRea4
+Manual despawn
+
+Spawned object 4: ObjetivoRea
+Reacction time: 2.41021 seconds
+
+Spawned object 5: ObjetivoRea4
+Spawned object 1: ObjetivoRea5
+Manual despawn
+
+Spawned object 2: ObjetivoRea2
+Spawned object 1: ObjetivoRea
+Manual despawn
+
+Spawned object 2: ObjetivoRea2
+Spawned object 1: ObjetivoRea
+Spawned object 1: ObjetivoRea3
+Manual despawn
+
+Spawned object 2: ObjetivoRea3
+Spawned object 1: ObjetivoRea1
+Manual despawn
+
+Spawned object 2: ObjetivoRea2
