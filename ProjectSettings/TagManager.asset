@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - TeleportTrigger
+  - HatRack
+  - Hat
   layers:
   - Default
   - TransparentFX
