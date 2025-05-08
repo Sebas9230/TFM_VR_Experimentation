@@ -95,3 +95,10 @@ Manual despawn
 Spawned object 15: ObjetivoRea3
 Manual despawn
 
+Spawned object 1: ObjetivoRea3
+Manual despawn
+
+Spawned object 2: ObjetivoRea
+Manual despawn
+
+Spawned object 3: ObjetivoRea3
