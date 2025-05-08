@@ -102,3 +102,13 @@ Spawned object 2: ObjetivoRea
 Manual despawn
 
 Spawned object 3: ObjetivoRea3
+Spawned object 1: ObjetivoRea4
+Manual despawn
+
+Spawned object 2: ObjetivoRea
+Manual despawn
+
+Spawned object 3: ObjetivoRea4
+Manual despawn
+
+Spawned object 4: ObjetivoRea3

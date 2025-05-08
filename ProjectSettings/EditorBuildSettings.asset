@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver_ObstacleCourse.unity
     guid: 38bc71240535eb744a015579f4064409
+  - enabled: 1
+    path: Assets/Scenes/GameOver_Puzzle.unity
+    guid: 2e1abc00755613b4a91106fd368b444c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
