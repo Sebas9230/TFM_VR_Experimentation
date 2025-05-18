@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class HatStandTrigger : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class HatStandTrigger : MonoBehaviour
     private static int totalCorrect = 5;
 
     private bool hatAlreadyPlaced = false;
+    private static bool gameFinished = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,10 +23,11 @@ public class HatStandTrigger : MonoBehaviour
                 correctHatsPlaced++;
                 Debug.Log($"✅ Sombrero correcto '{other.name}' en el stand de '{correctHatName}'. Total correctos: {correctHatsPlaced}");
 
-                if (correctHatsPlaced >= totalCorrect)
+                if (correctHatsPlaced >= totalCorrect && !gameFinished)
                 {
+                    gameFinished = true;
                     Debug.Log("🎉 ¡Todos los sombreros están en el lugar correcto!");
-                    SceneManager.LoadScene("GameOver_Puzzle");
+                    StartCoroutine(DelayAndLoadScene());
                 }
             }
             else
@@ -42,5 +45,11 @@ public class HatStandTrigger : MonoBehaviour
             correctHatsPlaced--;
             Debug.Log($"🔄 Sombrero '{other.name}' removido del stand de '{correctHatName}'. Total correctos: {correctHatsPlaced}");
         }
+    }
+
+    private IEnumerator DelayAndLoadScene()
+    {
+        yield return new WaitForSeconds(2f); // Espera 2 segundos
+        SceneManager.LoadScene("GameOver_Puzzle");
     }
 }
