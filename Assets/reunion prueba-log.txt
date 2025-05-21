@@ -294,3 +294,16 @@ Spawned object 8: ObjetivoRea
 Manual despawn
 
 Spawned object 9: ObjetivoRea2
+Spawned object 1: ObjetivoRea3
+Manual despawn
+
+Spawned object 2: ObjetivoRea2
+Manual despawn
+
+Spawned object 3: ObjetivoRea
+Manual despawn
+
+Spawned object 4: ObjetivoRea1
+Manual despawn
+
+Spawned object 5: ObjetivoRea

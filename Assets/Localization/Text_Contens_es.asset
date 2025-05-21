@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Text_Contens_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: a026a915677ead84085f5c652bb332e7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2149378555904
+    m_Localized: "Versi\xF3n Base"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3192476794880
+    m_Localized: Sonido Espacial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3298840150016
+    m_Localized: Control por Voz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3927469850624
+    m_Localized: Mandos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3933266378752
+    m_Localized: "Teletransportaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3938387623936
+    m_Localized: Caminar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4182013771776
+    m_Localized: Corta Distancia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4183867654144
+    m_Localized: Larga Distancia
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
