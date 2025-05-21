@@ -757,6 +757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93439195}
   - component: {fileID: 93439198}
+  - component: {fileID: 93439199}
   - component: {fileID: 93439197}
   - component: {fileID: 93439196}
   m_Layer: 5
@@ -829,7 +830,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 93439197}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 93439199}
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &93439197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,6 +881,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93439194}
   m_CullTransparentMesh: 1
+--- !u!114 &93439199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93439194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9843e4ccf075554a8fc7d1043889120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: ObstacleCourseScene
+  objectToActivateInScene: V3_Walk
 --- !u!1001 &112744656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9054,6 +9081,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271518587}
   m_CullTransparentMesh: 1
+--- !u!1 &1282446780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282446782}
+  - component: {fileID: 1282446781}
+  m_Layer: 0
+  m_Name: SceneTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1282446781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282446780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dcc69939a10a604789999675fcb956c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviousScene: 
+--- !u!4 &1282446782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282446780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0000009536743, y: 0, z: 3.302503}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1288233930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15186,3 +15258,4 @@ SceneRoots:
   - {fileID: 588687124}
   - {fileID: 591084508}
   - {fileID: 1736324473}
+  - {fileID: 1282446782}

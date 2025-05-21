@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class RoomTeleport : MonoBehaviour
+public class EndGameTeleport : MonoBehaviour
 {
     public string sceneToLoad = "";
     private bool isTeleporting = false;
@@ -20,10 +20,17 @@ public class RoomTeleport : MonoBehaviour
         }
     }
 
-    private IEnumerator TeleportAfterDelay(float delay)
+private IEnumerator TeleportAfterDelay(float delay)
+{
+    isTeleporting = true;
+    yield return new WaitForSeconds(delay);
+
+    if (SceneTracker.Instance != null)
     {
-        isTeleporting = true;
-        yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(sceneToLoad);
+        SceneTracker.Instance.PreviousScene = SceneManager.GetActiveScene().name;
     }
+
+    SceneManager.LoadScene(sceneToLoad);
+}
+
 }

@@ -47,6 +47,38 @@ MonoBehaviour:
     m_Key: Long_Distance_Text
     m_Metadata:
       m_Items: []
+  - m_Id: 94741650866176
+    m_Key: Clue1_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94744880480256
+    m_Key: Clue2_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94747170570240
+    m_Key: Clue3_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94752597999616
+    m_Key: Clue4_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94878662000640
+    m_Key: Clue5_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94921297100800
+    m_Key: Clue6_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 112289213710336
+    m_Key: GameOver_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 112345518047232
+    m_Key: Button_Text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

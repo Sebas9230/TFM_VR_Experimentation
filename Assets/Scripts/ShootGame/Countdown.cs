@@ -8,13 +8,16 @@ public class Countdown : MonoBehaviour
 {
     public float tiempo = 60f;
     public TMP_Text countDownText;
-    void Start() {
+    void Start()
+    {
         StartCoroutine(Contador());
     }
-    IEnumerator Contador() {
-        while(tiempo > 0) {
+    IEnumerator Contador()
+    {
+        while (tiempo > 0)
+        {
             yield return new WaitForSeconds(1);
-            tiempo --;
+            tiempo--;
             // Debug.Log(tiempo);
             // GameObject.FindWithTag("Tiempo").GetComponent<Text>().text = "Tiempo Restante   " + tiempo;
             countDownText.text = "Time Left " + tiempo;
@@ -25,6 +28,10 @@ public class Countdown : MonoBehaviour
 
     void FinishGame()
     {
-        SceneManager.LoadScene("GameOver");
+        if (SceneTracker.Instance != null)
+        {
+            SceneTracker.Instance.PreviousScene = SceneManager.GetActiveScene().name;
+        }
+        SceneManager.LoadScene("GameOverScene");
     }
 }

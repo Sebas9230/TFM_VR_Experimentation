@@ -50,6 +50,45 @@ MonoBehaviour:
     m_Localized: Long Distance
     m_Metadata:
       m_Items: []
+  - m_Id: 94741650866176
+    m_Localized: My owner watches everyone from the beginning of the line, like someone
+      opening a book to the first page.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94744880480256
+    m_Localized: My carrier likes to be near the center, but always keeps one lady
+      on his left and one on his right.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94747170570240
+    m_Localized: The one who leads me is the balance of the group, since everyone
+      surrounds her and no conversation escapes her ears.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94752597999616
+    m_Localized: My owner stands in the crowd, but only one person stands between
+      him and the end of the table.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94878662000640
+    m_Localized: My carrier is the last one in the round, like someone who closes
+      the circle and looks at everyone from the other end.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94921297100800
+    m_Localized: I don't have an owner but you can waste your time with me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 112345518047232
+    m_Localized: EXIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 112289213710336
+    m_Localized: 'Congratulations!
+
+      You''ve completed the challenge.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

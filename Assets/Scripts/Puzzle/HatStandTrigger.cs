@@ -23,6 +23,10 @@ public class HatStandTrigger : MonoBehaviour
                 correctHatsPlaced++;
                 Debug.Log($"✅ Sombrero correcto '{other.name}' en el stand de '{correctHatName}'. Total correctos: {correctHatsPlaced}");
 
+                // Actualiza el texto de sombreros
+                if (CronometerScore.Instance != null)
+                    CronometerScore.Instance.ActualizarSombreros(correctHatsPlaced);
+
                 if (correctHatsPlaced >= totalCorrect && !gameFinished)
                 {
                     gameFinished = true;
@@ -44,12 +48,20 @@ public class HatStandTrigger : MonoBehaviour
             hatAlreadyPlaced = false;
             correctHatsPlaced--;
             Debug.Log($"🔄 Sombrero '{other.name}' removido del stand de '{correctHatName}'. Total correctos: {correctHatsPlaced}");
+
+            // Actualiza el texto de sombreros
+            if (CronometerScore.Instance != null)
+                CronometerScore.Instance.ActualizarSombreros(correctHatsPlaced);
         }
     }
 
     private IEnumerator DelayAndLoadScene()
     {
-        yield return new WaitForSeconds(2f); // Espera 2 segundos
-        SceneManager.LoadScene("GameOver_Puzzle");
+        yield return new WaitForSeconds(2f);
+        if (SceneTracker.Instance != null)
+        {
+            SceneTracker.Instance.PreviousScene = SceneManager.GetActiveScene().name;
+        }
+        SceneManager.LoadScene("GameOverScene");
     }
 }

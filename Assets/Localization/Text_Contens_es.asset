@@ -50,6 +50,43 @@ MonoBehaviour:
     m_Localized: Larga Distancia
     m_Metadata:
       m_Items: []
+  - m_Id: 94741650866176
+    m_Localized: "Mi due\xF1a observa a todos desde el inicio de la fila, como quien
+      abre un libro por la primera p\xE1gina"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94744880480256
+    m_Localized: A mi portador le gusta estar cerca del centro, pero siempre mantiene
+      a una dama a su izquierda y otra a su derecha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94747170570240
+    m_Localized: "Quien me lleva es el equilibrio del grupo, pues todos la rodean
+      y ninguna conversaci\xF3n escapa a sus o\xEDdos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94752597999616
+    m_Localized: "Mi due\xF1o se encuentra entre la multitud, pero s\xF3lo una persona
+      se interpone entre \xE9l y el final de la mesa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94878662000640
+    m_Localized: "Mi portadora es la \xFAltima en la ronda, como quien cierra el
+      c\xEDrculo y mira a todos desde el otro extremo\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94921297100800
+    m_Localized: "No tengo due\xF1o pero conmigo puedes perder el tiempo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 112345518047232
+    m_Localized: SALIR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 112289213710336
+    m_Localized: "\xA1Felicidades!\nHas completado el desaf\xEDo"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
