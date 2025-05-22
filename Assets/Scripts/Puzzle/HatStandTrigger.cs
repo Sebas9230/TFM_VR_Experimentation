@@ -17,7 +17,7 @@ public class HatStandTrigger : MonoBehaviour
     {
         if (!hatAlreadyPlaced && other.CompareTag("Hat"))
         {
-            if (other.name.Contains(correctHatName))
+            if (other.name == correctHatName)
             {
                 hatAlreadyPlaced = true;
                 correctHatsPlaced++;
@@ -43,7 +43,7 @@ public class HatStandTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (hatAlreadyPlaced && other.CompareTag("Hat") && other.name.Contains(correctHatName))
+        if (hatAlreadyPlaced && other.CompareTag("Hat") && other.name == correctHatName)
         {
             hatAlreadyPlaced = false;
             correctHatsPlaced--;
