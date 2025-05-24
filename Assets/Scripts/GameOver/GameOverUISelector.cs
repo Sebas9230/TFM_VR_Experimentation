@@ -10,7 +10,7 @@ public class GameOverUISelector : MonoBehaviour
     {
         string prevScene = SceneTracker.Instance != null ? SceneTracker.Instance.PreviousScene : "";
 
-        if (prevScene == "SampleScene")
+        if (prevScene == "ShooterScene")
             shootGameUI.SetActive(true);
         else if (prevScene == "ObstacleCourseScene")
             obstacleCourseUI.SetActive(true);

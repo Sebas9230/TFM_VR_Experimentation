@@ -895,6 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: ObstacleCourseScene
   objectToActivateInScene: V3_Walk
+  controllerToActivateInScene: 
 --- !u!1001 &112744656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1778,6 +1779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: PuzzleScene
   objectToActivateInScene: V1_Corta_Distancia
+  controllerToActivateInScene: 
 --- !u!222 &222942348
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3066,6 +3068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: PuzzleScene
   objectToActivateInScene: V2_Larga_Distancia
+  controllerToActivateInScene: 
 --- !u!1 &423529120
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,6 +4076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: ObstacleCourseScene
   objectToActivateInScene: V1_Controller
+  controllerToActivateInScene: 
 --- !u!222 &491988781
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6580,6 +6584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 916501095}
+  - component: {fileID: 916501099}
   - component: {fileID: 916501098}
   - component: {fileID: 916501097}
   - component: {fileID: 916501096}
@@ -6653,7 +6658,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 916501097}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 916501099}
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &916501097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6692,6 +6709,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916501094}
   m_CullTransparentMesh: 1
+--- !u!114 &916501099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916501094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9843e4ccf075554a8fc7d1043889120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: ShooterScene
+  objectToActivateInScene: V3_Voice_Control
+  controllerToActivateInScene: V3_Voice_Control_Controller
 --- !u!1001 &937863468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6900,8 +6932,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9843e4ccf075554a8fc7d1043889120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SampleScene
+  sceneName: ShooterScene
   objectToActivateInScene: V1_Basic_Version
+  controllerToActivateInScene: V1_Basic_Version_Controller
 --- !u!1001 &942075824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8970,6 +9003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271518588}
   - component: {fileID: 1271518591}
+  - component: {fileID: 1271518592}
   - component: {fileID: 1271518590}
   - component: {fileID: 1271518589}
   m_Layer: 5
@@ -9042,7 +9076,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1271518590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1271518592}
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1271518590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9081,6 +9127,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271518587}
   m_CullTransparentMesh: 1
+--- !u!114 &1271518592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271518587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9843e4ccf075554a8fc7d1043889120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: ShooterScene
+  objectToActivateInScene: V2_Spatial_Sound
+  controllerToActivateInScene: V2_Spatial_Sound_Controller
 --- !u!1 &1282446780
 GameObject:
   m_ObjectHideFlags: 0
@@ -12928,7 +12989,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -13668,6 +13729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: ObstacleCourseScene
   objectToActivateInScene: V2_Teleport
+  controllerToActivateInScene: 
 --- !u!1 &1856019209
 GameObject:
   m_ObjectHideFlags: 0
