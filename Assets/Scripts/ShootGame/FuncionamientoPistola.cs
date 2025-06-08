@@ -25,10 +25,10 @@ public class FuncionamientoPistola : MonoBehaviour
             disparo = false;
             disparado = true;
         }
-        if(disparo && disparado){
-            Shoot();
-            disparado = false;
-        }
+        //if(disparo && disparado){
+        //    Shoot();
+        //    disparado = false;
+        //}
     }
     public void Shoot()
     {

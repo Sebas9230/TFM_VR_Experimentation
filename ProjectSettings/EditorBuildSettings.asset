@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 7f9cc7548e675474bb619d43eb61c374
   - enabled: 1
     path: Assets/Scenes/ShooterScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: bfc6b6285de765f4fac5f347c609fe1d
   - enabled: 1
     path: Assets/Scenes/ObstacleCourseScene.unity
     guid: 4f2d46845f081f541b3de8f6d0d5a935
@@ -28,7 +28,7 @@ EditorBuildSettings:
     guid: 38bc71240535eb744a015579f4064409
   - enabled: 1
     path: Assets/Scenes/GameOver_Puzzle.unity
-    guid: 2e1abc00755613b4a91106fd368b444c
+    guid: 6faef8925a91ad14c91fe0708ff1bb0f
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: d65fc8c87883ddd46b9b7785c92df98e
