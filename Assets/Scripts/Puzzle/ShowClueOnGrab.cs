@@ -27,12 +27,28 @@ public class ShowClueOnGrab : MonoBehaviour
 
         if (clueToShow != null)
             clueToShow.SetActive(true);
+            
+        // Registrar en logs
+        if (PuzzleLogsManager.Instance != null)
+        {
+            PuzzleLogsManager.Instance.RegistrarAgarreSombrero(gameObject.name);
+            if (clueToShow != null)
+            {
+                PuzzleLogsManager.Instance.RegistrarMostrarPista(gameObject.name);
+            }
+        }
     }
 
     private void OnReleased(SelectExitEventArgs args)
     {
         if (clueToShow != null)
             clueToShow.SetActive(false);
+            
+        // Registrar en logs
+        if (PuzzleLogsManager.Instance != null)
+        {
+            PuzzleLogsManager.Instance.RegistrarSueltaSombrero(gameObject.name);
+        }
     }
 
     private void HideAllClues()

@@ -610,7 +610,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 591084509}
     m_Modifications:
     - target: {fileID: 100000, guid: 931a75669ffc1214f93c0d969895e8a1, type: 3}
       propertyPath: m_Name
@@ -638,11 +638,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 931a75669ffc1214f93c0d969895e8a1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 931a75669ffc1214f93c0d969895e8a1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 931a75669ffc1214f93c0d969895e8a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -685,6 +685,11 @@ MonoBehaviour:
   uiTeleportB: {fileID: 566230244}
   uiTeleportC: {fileID: 1417795986}
   teleportType: 1
+--- !u!4 &63846239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 931a75669ffc1214f93c0d969895e8a1, type: 3}
+  m_PrefabInstance: {fileID: 63846236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &89899507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1779,7 +1784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: PuzzleScene
   objectToActivateInScene: V1_Corta_Distancia
-  controllerToActivateInScene: 
+  controllerToActivateInScene: V1_Corta_Distancia_Controller
 --- !u!222 &222942348
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1965,7 +1970,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 591084509}
     m_Modifications:
     - target: {fileID: 100000, guid: 60ea8a8ee79fc564294d0a35f8b0ae4a, type: 3}
       propertyPath: m_Name
@@ -1997,11 +2002,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60ea8a8ee79fc564294d0a35f8b0ae4a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60ea8a8ee79fc564294d0a35f8b0ae4a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60ea8a8ee79fc564294d0a35f8b0ae4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2048,6 +2053,11 @@ MonoBehaviour:
   uiTeleportB: {fileID: 566230244}
   uiTeleportC: {fileID: 1417795986}
   teleportType: 0
+--- !u!4 &319087888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 60ea8a8ee79fc564294d0a35f8b0ae4a, type: 3}
+  m_PrefabInstance: {fileID: 319087885}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &323562345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3068,7 +3078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: PuzzleScene
   objectToActivateInScene: V2_Larga_Distancia
-  controllerToActivateInScene: 
+  controllerToActivateInScene: V2_Larga_Distancia_Controller
 --- !u!1 &423529120
 GameObject:
   m_ObjectHideFlags: 0
@@ -4971,7 +4981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1565887663814566040, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
       propertyPath: m_Name
-      value: Teleportation Environment
+      value: Teleportation_Asset
       objectReference: {fileID: 0}
     - target: {fileID: 1565887663814566041, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
       propertyPath: m_RootOrder
@@ -5073,9 +5083,24 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 6895887226161143353, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
     - {fileID: 5175876250730923751, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
-    m_AddedGameObjects: []
+    - {fileID: 1565887663999455713, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1565887663814566041, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 319087888}
+    - targetCorrespondingSourceObject: {fileID: 1565887663814566041, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1908605494}
+    - targetCorrespondingSourceObject: {fileID: 1565887663814566041, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 63846239}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+--- !u!4 &591084509 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1565887663814566041, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+  m_PrefabInstance: {fileID: 591084508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &608944467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13935,7 +13960,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 591084509}
     m_Modifications:
     - target: {fileID: 100000, guid: b46e0920d9667ca45b59dc5301c885aa, type: 3}
       propertyPath: m_Name
@@ -13967,11 +13992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b46e0920d9667ca45b59dc5301c885aa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b46e0920d9667ca45b59dc5301c885aa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b46e0920d9667ca45b59dc5301c885aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14014,6 +14039,11 @@ MonoBehaviour:
   uiTeleportB: {fileID: 566230244}
   uiTeleportC: {fileID: 1417795986}
   teleportType: 2
+--- !u!4 &1908605494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: b46e0920d9667ca45b59dc5301c885aa, type: 3}
+  m_PrefabInstance: {fileID: 1908605491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1919204186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15318,9 +15348,6 @@ SceneRoots:
   - {fileID: 1703568386}
   - {fileID: 348946200}
   - {fileID: 1294313525}
-  - {fileID: 319087885}
-  - {fileID: 63846236}
-  - {fileID: 1908605491}
   - {fileID: 588687124}
   - {fileID: 591084508}
   - {fileID: 1736324473}

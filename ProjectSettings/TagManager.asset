@@ -7,14 +7,20 @@ TagManager:
   - TeleportTrigger
   - HatRack
   - Hat
+  - Anchor
+  - PlayerHand
+  - Hand
+  - Bala
+  - Disparable
+  - Stand
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Hat
   - Water
   - UI
-  - 
+  - HatStand
   - 
   - 
   - 

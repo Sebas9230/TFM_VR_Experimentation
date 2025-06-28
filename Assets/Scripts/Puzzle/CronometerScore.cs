@@ -29,7 +29,10 @@ public class CronometerScore : MonoBehaviour
 
     public void ActualizarSombreros(int cantidad)
     {
-        textoSombreros.text = $"{cantidad}/5";
+        if (textoSombreros != null)
+        {
+            textoSombreros.text = $"{cantidad}/5";
+        }
     }
 
     public void DetenerCronometro()
