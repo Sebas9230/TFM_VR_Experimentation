@@ -13,6 +13,13 @@ public class EndGameTeleport : MonoBehaviour
         // Asegurarse de que el objeto que entra es el XR Rig o un Controlador VR
         if ((other.CompareTag("Player") || other.GetComponent<XRController>()) && !isTeleporting)
         {
+            // Detener cronómetro y registrar finalización
+            Cronometer cronometer = FindObjectOfType<Cronometer>();
+            if (cronometer != null)
+            {
+                cronometer.DetenerCronometro();
+            }
+            
             if (!string.IsNullOrEmpty(sceneToLoad))
             {
                 StartCoroutine(TeleportAfterDelay(1f)); // Espera 1 segundo antes de teletransportar

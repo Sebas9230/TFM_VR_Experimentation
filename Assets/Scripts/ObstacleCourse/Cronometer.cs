@@ -21,12 +21,24 @@ public class Cronometer : MonoBehaviour
     public void DetenerCronometro()
     {
         contando = false;
+        
+        // Registrar la finalización del curso en el log
+        if (ObstacleCourseLogger.Instance != null)
+        {
+            ObstacleCourseLogger.Instance.LogCompletarCurso(tiempo);
+        }
     }
 
     public void ReiniciarCronometro()
     {
         tiempo = 0f;
         contando = true;
+        
+        // Registrar el reinicio del juego en el log
+        if (ObstacleCourseLogger.Instance != null)
+        {
+            ObstacleCourseLogger.Instance.LogInicioJuego();
+        }
     }
 
     public float ObtenerTiempoFinal()
