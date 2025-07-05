@@ -27,6 +27,15 @@ public class Cronometer : MonoBehaviour
         {
             ObstacleCourseLogger.Instance.LogCompletarCurso(tiempo);
         }
+        
+        // Guardar los resultados en SceneTracker
+        if (SceneTracker.Instance != null && ObstacleCourseLogger.Instance != null)
+        {
+            // Calcular la tasa de éxito
+            int totalIntentos = ObstacleCourseLogger.Instance.numeroReiniciosPorCaida + 1;
+            float successRate = (1.0f / totalIntentos) * 100;
+            SceneTracker.Instance.SetObstacleCourseResults(tiempo, successRate);
+        }
     }
 
     public void ReiniciarCronometro()

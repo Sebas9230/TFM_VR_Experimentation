@@ -31,6 +31,11 @@ public class Countdown : MonoBehaviour
         if (SceneTracker.Instance != null)
         {
             SceneTracker.Instance.PreviousScene = SceneManager.GetActiveScene().name;
+            // Guardar el score del shooter
+            if (ObjetivosManager.Instance != null)
+            {
+                SceneTracker.Instance.SetShooterResults(ObjetivosManager.Instance.puntos);
+            }
         }
         SceneManager.LoadScene("GameOverScene");
     }

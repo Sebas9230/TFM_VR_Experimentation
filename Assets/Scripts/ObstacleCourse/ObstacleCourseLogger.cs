@@ -14,7 +14,7 @@ public class ObstacleCourseLogger : MonoBehaviour
     public string path;
     private float tiempoInicio;
     private int numeroIntentos = 0;
-    private int numeroReiniciosPorCaida = 0;
+    public int numeroReiniciosPorCaida = 0;
     
     void Awake()
     {

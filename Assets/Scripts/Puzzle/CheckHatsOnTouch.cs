@@ -73,6 +73,19 @@ public class CheckHatsOnTouch : MonoBehaviour
                 PuzzleLogsManager.Instance.RegistrarCompletarPuzzle();
             }
             
+            // Guardar los resultados en SceneTracker
+            if (SceneTracker.Instance != null && PuzzleLogsManager.Instance != null)
+            {
+                // Obtener estadísticas del puzzle
+                int totalIntentos, totalAciertos, totalErrores;
+                float tiempoTotal;
+                PuzzleLogsManager.Instance.ObtenerEstadisticas(out totalIntentos, out totalAciertos, out totalErrores, out tiempoTotal);
+                
+                // Calcular precisión
+                float accuracy = totalIntentos > 0 ? (float)totalAciertos / totalIntentos * 100 : 0;
+                SceneTracker.Instance.SetPuzzleResults(tiempoTotal, accuracy);
+            }
+            
             StartCoroutine(DelayAndLoadScene());
         }
         else
