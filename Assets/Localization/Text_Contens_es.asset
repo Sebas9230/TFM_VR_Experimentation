@@ -87,6 +87,10 @@ MonoBehaviour:
     m_Localized: "\xA1Felicidades!\nHas completado el desaf\xEDo"
     m_Metadata:
       m_Items: []
+  - m_Id: 19325947667939328
+    m_Localized: Seguimiento ocular
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

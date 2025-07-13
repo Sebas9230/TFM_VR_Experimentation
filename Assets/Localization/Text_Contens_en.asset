@@ -89,6 +89,10 @@ MonoBehaviour:
       You''ve completed the challenge.'
     m_Metadata:
       m_Items: []
+  - m_Id: 19325947667939328
+    m_Localized: Eye Tracking
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
