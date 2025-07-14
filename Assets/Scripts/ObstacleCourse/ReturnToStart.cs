@@ -25,6 +25,12 @@ public class ReturnToStart : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // Registrar la caída en el log antes de teletransportar
+            if (ObstacleCourseLogger.Instance != null)
+            {
+                ObstacleCourseLogger.Instance.LogCaidaYReinicio(other.transform.position);
+            }
+            
             other.transform.position = initialPosition;
             other.transform.rotation = initialRotation;
         }
