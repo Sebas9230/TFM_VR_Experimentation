@@ -16,17 +16,20 @@ public class ObstacleCourseLogger : MonoBehaviour
     private int numeroIntentos = 0;
     public int numeroReiniciosPorCaida = 0;
     
+    // Initializes singleton instance
     void Awake()
     {
         Instance = this;
     }
 
+    // Initializes logging system
     void Start()
     {
         CrearArchivoLog();
         LogInicioJuego();
     }
 
+    // Creates log file for obstacle course tracking
     public void CrearArchivoLog()
     {
         path = Application.dataPath + "/" + nombreArchivoLogs + "-log.txt";
@@ -42,19 +45,20 @@ public class ObstacleCourseLogger : MonoBehaviour
                 header += "=====================================\n\n";
                 
                 File.WriteAllText(path, header);
-                Debug.Log("Log file creado en: " + path);
+                Debug.Log("Log file created at: " + path);
             }
             else
             {
-                Debug.Log("Log file ya existe en: " + path);
+                Debug.Log("Log file already exists at: " + path);
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error al crear el log: " + ex.Message);
+            Debug.LogError("Error creating log: " + ex.Message);
         }
     }
 
+    // Logs game start attempt
     public void LogInicioJuego()
     {
         tiempoInicio = Time.time;
@@ -64,6 +68,7 @@ public class ObstacleCourseLogger : MonoBehaviour
         AppendToLog(logEntry);
     }
 
+    // Logs player fall and reset
     public void LogCaidaYReinicio(Vector3 posicionCaida)
     {
         numeroReiniciosPorCaida++;
@@ -77,9 +82,10 @@ public class ObstacleCourseLogger : MonoBehaviour
         AppendToLog(logEntry);
     }
 
+    // Logs course completion with statistics
     public void LogCompletarCurso(float tiempoFinal)
     {
-        int totalIntentos = numeroReiniciosPorCaida + 1; // Las caídas + el intento exitoso
+        int totalIntentos = numeroReiniciosPorCaida + 1; // Falls + successful attempt
         float successRate = (1.0f / totalIntentos) * 100;
         
         string logEntry = $"[{DateTime.Now:HH:mm:ss}] COURSE COMPLETED!\n";
@@ -92,12 +98,14 @@ public class ObstacleCourseLogger : MonoBehaviour
         AppendToLog(logEntry);
     }
 
+    // Logs custom events
     public void LogEventoPersonalizado(string evento)
     {
         string logEntry = $"[{DateTime.Now:HH:mm:ss}] CUSTOM EVENT: {evento}\n";
         AppendToLog(logEntry);
     }
 
+    // Appends content to log file
     private void AppendToLog(string content)
     {
         try
@@ -110,16 +118,18 @@ public class ObstacleCourseLogger : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error al escribir en el log: " + ex.Message);
+            Debug.LogError("Error writing to log: " + ex.Message);
         }
     }
 
+    // Resets attempt counters
     public void ReiniciarContadores()
     {
         numeroIntentos = 0;
         numeroReiniciosPorCaida = 0;
     }
 
+    // Handles application pause events
     void OnApplicationPause(bool pauseStatus)
     {
         if (pauseStatus)
@@ -132,6 +142,7 @@ public class ObstacleCourseLogger : MonoBehaviour
         }
     }
 
+    // Handles application focus events
     void OnApplicationFocus(bool hasFocus)
     {
         if (!hasFocus)

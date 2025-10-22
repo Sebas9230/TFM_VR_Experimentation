@@ -8,10 +8,14 @@ public class Countdown : MonoBehaviour
 {
     public float tiempo = 60f;
     public TMP_Text countDownText;
+    
+    // Starts the countdown timer
     void Start()
     {
         StartCoroutine(Contador());
     }
+    
+    // Countdown coroutine that updates the timer display
     IEnumerator Contador()
     {
         while (tiempo > 0)
@@ -22,16 +26,17 @@ public class Countdown : MonoBehaviour
             // GameObject.FindWithTag("Tiempo").GetComponent<Text>().text = "Tiempo Restante   " + tiempo;
             countDownText.text = "Time Left " + tiempo;
         }
-        Debug.Log("Fin del tiempo");
+        Debug.Log("Time finished");
         FinishGame();
     }
 
+    // Finishes the game and saves results to SceneTracker
     void FinishGame()
     {
         if (SceneTracker.Instance != null)
         {
             SceneTracker.Instance.PreviousScene = SceneManager.GetActiveScene().name;
-            // Guardar el score del shooter
+            // Save the shooter score
             if (ObjetivosManager.Instance != null)
             {
                 SceneTracker.Instance.SetShooterResults(ObjetivosManager.Instance.puntos);

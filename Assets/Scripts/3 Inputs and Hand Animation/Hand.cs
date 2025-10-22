@@ -16,11 +16,13 @@ public class Hand :  MonoBehaviour
     private Animator _handAnimator;
 
 
+    // Initializes hand tracking system
     private void Start()
     {
         InitializeHand();
     }
 
+    // Initializes hand device and creates hand prefab
     private void InitializeHand()
     {
         List<InputDevice> devices = new List<InputDevice>();
@@ -54,6 +56,7 @@ public class Hand :  MonoBehaviour
         }
     }
 
+    // Updates hand animation based on controller input
     private void UpdateHand()
     {
         //This will get the value for our trigger from the target device and output a flaot into triggerValue

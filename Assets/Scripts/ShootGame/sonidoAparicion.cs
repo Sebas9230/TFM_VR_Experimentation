@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class sonidoAparicion : MonoBehaviour
 {
+    // Plays entrance sound when object is activated
     void OnEnable()
     {
         StartCoroutine(PlayEntrance());
     }
+    
+    // Coroutine to play entrance sound
     IEnumerator PlayEntrance() {
         GetComponent<AudioSource>().Play();
-        Debug.Log("Sonido de aparicion");
+        Debug.Log("Entrance sound");
         yield return null;
     }
 }

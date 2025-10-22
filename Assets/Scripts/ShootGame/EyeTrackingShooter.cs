@@ -2,97 +2,97 @@ using UnityEngine;
 using ViveSR.anipal.Eye;
 
 /// <summary>
-/// Sistema de disparo controlado por eye tracking usando las gafas HTC Vive Pro Eye
-/// Permite disparar mirando objetivos con un cooldown configurable
+/// Eye tracking shooting system using HTC Vive Pro Eye glasses
+/// Allows shooting by looking at targets with configurable cooldown
 /// </summary>
 public class EyeTrackingShooter : MonoBehaviour
 {
-    [Header("Configuración de Disparo")]
-    public float maxDistance = 20f;              // Distancia máxima del raycast
-    public LayerMask layerMask;                  // Capas que pueden ser golpeadas por el raycast
-    public float tiempoEntreDisparos = 1f;       // Tiempo mínimo entre disparos consecutivos
+    [Header("Shooting Configuration")]
+    public float maxDistance = 20f;              // Maximum raycast distance
+    public LayerMask layerMask;                  // Layers that can be hit by raycast
+    public float tiempoEntreDisparos = 1f;       // Minimum time between consecutive shots
     
-    // Variables privadas para control interno
-    private float tiempoUltimoDisparo = -999f;   // Timestamp del último disparo realizado
-    private Transform cameraTransform;           // Referencia al transform de la cámara VR
+    // Private variables for internal control
+    private float tiempoUltimoDisparo = -999f;   // Timestamp of last shot
+    private Transform cameraTransform;           // Reference to VR camera transform
     
-    // LineRenderer para debug visual (comentado para evitar errores)
+    // LineRenderer for visual debug (commented to avoid errors)
     // private LineRenderer lineRenderer;
 
     /// <summary>
-    /// Inicialización del sistema - busca y configura la cámara VR
+    /// System initialization - finds and configures VR camera
     /// </summary>
     void Start()
     {
-        // DEBUG: Inicializar LineRenderer para visualización (comentado)
+        // DEBUG: Initialize LineRenderer for visualization (commented)
         // lineRenderer = GetComponent<LineRenderer>();
         
-        // Obtener la referencia a la cámara principal de VR
+        // Get reference to main VR camera
         if (Camera.main != null)
         {
             cameraTransform = Camera.main.transform;
-            Debug.Log("Cámara principal encontrada para Eye Tracking");
+            Debug.Log("Main camera found for Eye Tracking");
         }
         else
         {
-            // Fallback: buscar cualquier cámara activa en la escena
+            // Fallback: search for any active camera in the scene
             Camera cam = FindObjectOfType<Camera>();
             if (cam != null)
             {
                 cameraTransform = cam.transform;
-                Debug.Log("Usando cámara alternativa para Eye Tracking: " + cam.name);
+                Debug.Log("Using alternative camera for Eye Tracking: " + cam.name);
             }
             else
             {
-                Debug.LogError("No se encontró ninguna cámara en la escena para Eye Tracking");
+                Debug.LogError("No camera found in scene for Eye Tracking");
             }
         }
     }
 
     /// <summary>
-    /// Bucle principal del sistema de eye tracking
-    /// Procesa la mirada del usuario y ejecuta disparos cuando es necesario
+    /// Main eye tracking system loop
+    /// Processes user gaze and executes shots when necessary
     /// </summary>
     void Update()
     {
-        // Verificar que el framework de eye tracking esté funcionando
+        // Check that eye tracking framework is working
         if (SRanipal_Eye_Framework.Status != SRanipal_Eye_Framework.FrameworkStatus.WORKING)
             return;
 
-        // Verificar que tengamos una cámara válida
+        // Check that we have a valid camera
         if (cameraTransform == null)
             return;
 
-        // Variables para almacenar los datos de la mirada
+        // Variables to store gaze data
         Vector3 gazeOrigin, gazeDirection;
 
-        // Obtener el rayo de la mirada combinada (ambos ojos)
+        // Get combined gaze ray (both eyes)
         if (SRanipal_Eye.GetGazeRay(GazeIndex.COMBINE, out gazeOrigin, out gazeDirection))
         {
-            // === PROCESAMIENTO DEL RAYO DE MIRADA ===
+            // === GAZE RAY PROCESSING ===
             
-            // Usar la posición de la cámara VR como origen del rayo (más preciso)
+            // Use VR camera position as ray origin (more precise)
             Vector3 rayOrigin = cameraTransform.position;
             
-            // Transformar la dirección de la mirada del espacio local al espacio mundial
+            // Transform gaze direction from local space to world space
             Vector3 worldGazeDirection = cameraTransform.TransformDirection(gazeDirection);
             
-            // DEBUG: Visualización del rayo (comentado para evitar errores)
+            // DEBUG: Ray visualization (commented to avoid errors)
             // lineRenderer.SetPosition(0, rayOrigin);
             // lineRenderer.SetPosition(1, rayOrigin + worldGazeDirection * maxDistance);
 
-            // === SISTEMA DE DISPARO CON COOLDOWN ===
+            // === SHOOTING SYSTEM WITH COOLDOWN ===
             
-            // Verificar que haya pasado suficiente tiempo desde el último disparo
+            // Check that enough time has passed since last shot
             if (Time.time - tiempoUltimoDisparo >= tiempoEntreDisparos)
             {
-                // Lanzar raycast para detectar objetivos
+                // Launch raycast to detect targets
                 if (Physics.Raycast(rayOrigin, worldGazeDirection, out RaycastHit hit, maxDistance, layerMask))
                 {
-                    // Verificar que el objeto golpeado sea un objetivo válido
+                    // Check that the hit object is a valid target
                     if (hit.collider.CompareTag("Disparable"))
                     {
-                        // Ejecutar disparo y actualizar timestamp
+                        // Execute shot and update timestamp
                         DispararDesdeMirada(rayOrigin, worldGazeDirection);
                         tiempoUltimoDisparo = Time.time;
                     }
@@ -102,24 +102,24 @@ public class EyeTrackingShooter : MonoBehaviour
     }
 
     /// <summary>
-    /// Ejecuta el disparo creando una bala desde el pool de objetos
+    /// Executes shot by creating a bullet from object pool
     /// </summary>
-    /// <param name="origen">Posición desde donde se dispara la bala</param>
-    /// <param name="direccion">Dirección hacia donde va la bala</param>
+    /// <param name="origen">Position from where the bullet is shot</param>
+    /// <param name="direccion">Direction where the bullet goes</param>
     void DispararDesdeMirada(Vector3 origen, Vector3 direccion)
     {
-        // Obtener una bala del pool de objetos
+        // Get a bullet from object pool
         GameObject bala = PoolManager.Instance.GetBullet();
         
-        // Configurar posición y orientación de la bala
+        // Configure bullet position and orientation
         bala.transform.position = origen;
         bala.transform.forward = direccion;
         
-        // Activar la bala y aplicar velocidad
+        // Activate bullet and apply velocity
         bala.SetActive(true);
         bala.GetComponent<Rigidbody>().velocity = direccion * 10f;
         
-        // Log para debug
-        Debug.Log("Disparo ejecutado con Eye Tracking");
+        // Debug log
+        Debug.Log("Shot executed with Eye Tracking");
     }
 }

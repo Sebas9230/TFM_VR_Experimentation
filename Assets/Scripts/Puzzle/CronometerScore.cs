@@ -4,18 +4,20 @@ using TMPro;
 public class CronometerScore : MonoBehaviour
 {
     public TextMeshProUGUI textoTiempo;
-    public TextMeshProUGUI textoSombreros; // NUEVO: texto para sombreros correctos
+    public TextMeshProUGUI textoSombreros; // NEW: text for correct hats
 
     private float tiempo;
     private bool contando = true;
 
-    public static CronometerScore Instance; // Singleton para acceso desde otros scripts
+    public static CronometerScore Instance; // Singleton for access from other scripts
 
+    // Initializes singleton instance
     private void Awake()
     {
         Instance = this;
     }
 
+    // Updates timer display while counting
     void Update()
     {
         if (contando)
@@ -27,22 +29,26 @@ public class CronometerScore : MonoBehaviour
         }
     }
 
+    // Updates hat count display
     public void ActualizarSombreros(int cantidad)
     {
         textoSombreros.text = $"{cantidad}/5";
     }
 
+    // Stops timer
     public void DetenerCronometro()
     {
         contando = false;
     }
 
+    // Restarts timer
     public void ReiniciarCronometro()
     {
         tiempo = 0f;
         contando = true;
     }
 
+    // Returns final timer value
     public float ObtenerTiempoFinal()
     {
         return tiempo;

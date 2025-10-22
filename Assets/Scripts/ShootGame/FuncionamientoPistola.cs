@@ -15,6 +15,8 @@ public class FuncionamientoPistola : MonoBehaviour
     public bool disparo = false;
     public bool disparado = true;
     public TMP_Text scoreText;
+    
+    // Updates score display and handles shooting input
     void Update()
     {
         Puntaje();
@@ -30,6 +32,8 @@ public class FuncionamientoPistola : MonoBehaviour
         //    disparado = false;
         //}
     }
+    
+    // Creates and fires a bullet from the spawn point
     public void Shoot()
     {
         Debug.Log("Shoot");
@@ -41,7 +45,8 @@ public class FuncionamientoPistola : MonoBehaviour
         
     }
 
-    void Puntaje() { // función para mostrar el puntaje en pantalla
+    // Function to display score on screen
+    void Puntaje() {
         // GameObject.FindObjectOfType<UnityEngine.UI.Text>().text = "Puntuación  " + ObjetivosManager.Instance.puntos;
         // GameObject.FindWithTag("Score").GetComponent<Text>().text = "Puntuación " + ObjetivosManager.Instance.puntos;
         scoreText.text = "Score " + ObjetivosManager.Instance.puntos;

@@ -11,6 +11,8 @@ public class InterfazManager : MonoBehaviour
     public GameObject panelInterfazP;
     public int rotacionP = 175;
     public int rotacionT = 190;
+    
+    // Updates UI panel positions to follow head movement
     void Update() {
         panelInterfazT.transform.position = cabeza.position + new Vector3(cabeza.forward.x, cabeza.forward.y, cabeza.forward.z).normalized * distanciaInterfaz;
         panelInterfazT.transform.LookAt(new Vector3(-cabeza.position.x, cabeza.position.y, cabeza.position.z)); 

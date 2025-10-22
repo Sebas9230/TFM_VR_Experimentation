@@ -6,12 +6,14 @@ public class ControlCamara : MonoBehaviour
 {
     public Vector2 giro;
     public float velocidadGiro = 0.5f;
+    
+    // Locks cursor and initializes camera control
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
+    // Updates camera rotation based on mouse input
     void Update()
     {
         giro.x += Input.GetAxis("Mouse X") * velocidadGiro;

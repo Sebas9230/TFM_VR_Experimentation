@@ -5,12 +5,16 @@ using UnityEngine;
 public class RaycastMirilla : MonoBehaviour
 {
     public LineRenderer lineRenderer;
+    
+    // Initializes line renderer properties
     void Start()
     {
         lineRenderer.startWidth = 0.02f;
         lineRenderer.endWidth = 0.02f;
         lineRenderer.positionCount = 2;
     }
+    
+    // Updates crosshair visualization based on raycast hits
     void Update()
     {
        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 20f))

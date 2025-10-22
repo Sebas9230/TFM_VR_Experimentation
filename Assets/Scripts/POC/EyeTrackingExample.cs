@@ -12,9 +12,10 @@ public class EyeTrackingExample : MonoBehaviour
     private Camera eyeCamera;
     private EyeData eyeData = new EyeData();
 
+    // Initializes main camera reference
     void Start()
     {
-        // Inicializar la cámara principal
+        // Initialize main camera
         eyeCamera = Camera.main;
         if (eyeCamera == null)
         {
@@ -22,55 +23,57 @@ public class EyeTrackingExample : MonoBehaviour
         }
     }
 
+    // Main eye tracking loop
     void Update()
     {
-        // Verificar que el framework de eye tracking esté funcionando
+        // Check that eye tracking framework is working
         if (SRanipal_Eye_Framework.Status != SRanipal_Eye_Framework.FrameworkStatus.WORKING)
         {
             return;
         }
 
-        // Obtener datos del eye tracking
+        // Get eye tracking data
         if (SRanipal_Eye_API.GetEyeData(ref eyeData) == ViveSR.Error.WORK)
         {
-            // Obtener la dirección de la mirada combinada
+            // Get combined gaze direction
             Vector3 gazeOrigin;
             Vector3 gazeDirection;
             
             if (SRanipal_Eye.GetGazeRay(GazeIndex.COMBINE, out gazeOrigin, out gazeDirection, eyeData))
             {
-                // Crear el rayo de mirada
+                // Create gaze ray
                 Ray gazeRay = new Ray(gazeOrigin, gazeDirection);
                 
-                // Dibujar el rayo en la escena (solo visible en Scene view)
+                // Draw ray in scene (only visible in Scene view)
                 Debug.DrawRay(gazeOrigin, gazeDirection * maxRaycastDistance, Color.green);
                 
-                // Realizar raycast para detectar objetos
+                // Perform raycast to detect objects
                 RaycastHit hit;
                 if (Physics.Raycast(gazeRay, out hit, maxRaycastDistance, raycastLayerMask))
                 {
-                    Debug.Log("Mirando a: " + hit.collider.name + " a distancia: " + hit.distance.ToString("F2") + "m");
+                    Debug.Log("Looking at: " + hit.collider.name + " at distance: " + hit.distance.ToString("F2") + "m");
                     
-                    // Opcional: Cambiar color del objeto mirado
+                    // Optional: Change color of looked object
                     Renderer renderer = hit.collider.GetComponent<Renderer>();
                     if (renderer != null)
                     {
-                        // Aquí puedes agregar lógica para destacar el objeto
+                        // Here you can add logic to highlight the object
                     }
                 }
             }
         }
         else
         {
-            Debug.LogWarning("No se pudieron obtener datos del eye tracking");
+            Debug.LogWarning("Could not get eye tracking data");
         }
     }
 
+    // Handles application pause to reinitialize eye tracking
     void OnApplicationPause(bool pauseStatus)
     {
         if (!pauseStatus)
         {
-            // Reinicializar el eye tracking cuando la aplicación vuelve del pause
+            // Reinitialize eye tracking when application returns from pause
             SRanipal_Eye_Framework.Instance.StartFramework();
         }
     }
