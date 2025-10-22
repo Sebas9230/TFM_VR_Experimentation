@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HatStandTrigger : MonoBehaviour
 {
-    [Header("Nombre correcto del sombrero para este stand")]
+    [Header("Correct hat name for this stand")]
     public string correctHatName;
 
     private static int correctHatsPlaced = 0;
@@ -11,10 +11,10 @@ public class HatStandTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Validar que el stand esté correctamente configurado
+        // Validate that the stand is correctly configured
         if (string.IsNullOrEmpty(correctHatName))
         {
-            Debug.LogWarning($"HatStandTrigger en '{gameObject.name}' no tiene correctHatName configurado. Ignorando trigger.");
+            Debug.LogWarning($"HatStandTrigger on '{gameObject.name}' doesn't have correctHatName configured. Ignoring trigger.");
             return;
         }
         
@@ -24,9 +24,9 @@ public class HatStandTrigger : MonoBehaviour
             {
                 hatAlreadyPlaced = true;
                 correctHatsPlaced++;
-                Debug.Log($"Sombrero correcto '{other.name}' en el stand de '{correctHatName}'. Total correctos: {correctHatsPlaced}");
+                Debug.Log($"Correct hat '{other.name}' on stand for '{correctHatName}'. Total correct: {correctHatsPlaced}");
                 
-                // Registrar en logs
+                // Log in logs
                 if (PuzzleLogsManager.Instance != null)
                 {
                     PuzzleLogsManager.Instance.RegistrarColocacionCorrecta(other.name, correctHatName);
@@ -34,9 +34,9 @@ public class HatStandTrigger : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Sombrero incorrecto '{other.name}' en el stand de '{correctHatName}' (GameObject: {gameObject.name})");
+                Debug.LogWarning($"Incorrect hat '{other.name}' on stand for '{correctHatName}' (GameObject: {gameObject.name})");
                 
-                // Registrar en logs solo si no es el sombrero correcto para ESTE stand específico
+                // Log only if it's not the correct hat for THIS specific stand
                 if (PuzzleLogsManager.Instance != null)
                 {
                     PuzzleLogsManager.Instance.RegistrarColocacionIncorrecta(other.name, correctHatName);
@@ -47,7 +47,7 @@ public class HatStandTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // Validar que el stand esté correctamente configurado
+        // Validate that the stand is correctly configured
         if (string.IsNullOrEmpty(correctHatName))
         {
             return;
@@ -57,9 +57,9 @@ public class HatStandTrigger : MonoBehaviour
         {
             hatAlreadyPlaced = false;
             correctHatsPlaced--;
-            Debug.Log($"Sombrero '{other.name}' removido del stand de '{correctHatName}'. Total correctos: {correctHatsPlaced}");
+            Debug.Log($"Hat '{other.name}' removed from stand for '{correctHatName}'. Total correct: {correctHatsPlaced}");
             
-            // Registrar en logs
+            // Log in logs
             if (PuzzleLogsManager.Instance != null)
             {
                 PuzzleLogsManager.Instance.RegistrarRemoverSombrero(other.name, correctHatName);

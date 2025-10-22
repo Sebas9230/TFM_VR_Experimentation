@@ -5,17 +5,17 @@ using System.Collections.Generic;
 
 public class CheckHatsOnTouch : MonoBehaviour
 {
-    [Header("Configuración")]
-    [Tooltip("Sombreros en la escena")]
+    [Header("Configuration")]
+    [Tooltip("Hats in the scene")]
     public GameObject[] hats;
     
-    [Tooltip("Stands de sombreros")]
+    [Tooltip("Hat stands")]
     public HatStandTrigger[] hatStands;
     
-    [Tooltip("Delay antes de cambiar de escena si todos son correctos")]
+    [Tooltip("Delay before changing scene if all are correct")]
     public float sceneChangeDelay = 2f;
     
-    [Tooltip("Cooldown en segundos entre verificaciones")]
+    [Tooltip("Cooldown in seconds between checks")]
     public float checkCooldown = 0.5f;
 
     private Dictionary<GameObject, Vector3> initialHatPositions;
@@ -24,7 +24,7 @@ public class CheckHatsOnTouch : MonoBehaviour
 
     private void Start()
     {
-        // Guardar posiciones iniciales de los sombreros
+        // Save initial positions of the hats
         initialHatPositions = new Dictionary<GameObject, Vector3>();
         initialHatRotations = new Dictionary<GameObject, Quaternion>();
         
@@ -40,7 +40,7 @@ public class CheckHatsOnTouch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Verificar si es el jugador quien toca el cubo y si ha pasado el cooldown
+        // Check if it's the player touching the cube and if cooldown has passed
         if ((other.CompareTag("Player") || other.name.Contains("Hand") || other.name.Contains("Controller")) && 
             Time.time - lastCheckTime >= checkCooldown)
         {
@@ -54,34 +54,34 @@ public class CheckHatsOnTouch : MonoBehaviour
         int correctHats = GetCorrectHatsCount();
         int totalHats = hatStands.Length;
 
-        // Actualizar marcador en la pizarra
+        // Update marker on the board
         if (CronometerScore.Instance != null)
         {
             CronometerScore.Instance.ActualizarSombreros(correctHats);
         }
 
-        Debug.Log($"Sombreros correctos: {correctHats}/{totalHats}");
+        Debug.Log($"Correct hats: {correctHats}/{totalHats}");
 
         if (correctHats >= totalHats)
         {
-            // Todos los sombreros están correctos, cambiar de escena
-            Debug.Log("🎉 ¡Todos los sombreros están en el lugar correcto!");
+            // All hats are correct, change scene
+            Debug.Log("🎉 All hats are in the correct place!");
             
-            // Registrar completar puzzle en logs
+            // Log puzzle completion
             if (PuzzleLogsManager.Instance != null)
             {
                 PuzzleLogsManager.Instance.RegistrarCompletarPuzzle();
             }
             
-            // Guardar los resultados en SceneTracker
+            // Save results in SceneTracker
             if (SceneTracker.Instance != null && PuzzleLogsManager.Instance != null)
             {
-                // Obtener estadísticas del puzzle
+                // Get puzzle statistics
                 int totalIntentos, totalAciertos, totalErrores;
                 float tiempoTotal;
                 PuzzleLogsManager.Instance.ObtenerEstadisticas(out totalIntentos, out totalAciertos, out totalErrores, out tiempoTotal);
                 
-                // Calcular precisión
+                // Calculate accuracy
                 float accuracy = totalIntentos > 0 ? (float)totalAciertos / totalIntentos * 100 : 0;
                 SceneTracker.Instance.SetPuzzleResults(tiempoTotal, accuracy);
             }
@@ -90,7 +90,7 @@ public class CheckHatsOnTouch : MonoBehaviour
         }
         else
         {
-            // Resetear posiciones de sombreros incorrectos
+            // Reset positions of incorrect hats
             ResetIncorrectHats();
         }
     }
@@ -101,7 +101,7 @@ public class CheckHatsOnTouch : MonoBehaviour
         
         foreach (HatStandTrigger stand in hatStands)
         {
-            // Verificar si hay un sombrero correcto en este stand
+            // Check if there's a correct hat in this stand
             Collider[] collidersInTrigger = Physics.OverlapBox(
                 stand.transform.position,
                 stand.GetComponent<Collider>().bounds.size / 2,
@@ -129,12 +129,12 @@ public class CheckHatsOnTouch : MonoBehaviour
 
             bool isCorrectlyPlaced = false;
 
-            // Verificar si este sombrero está en el stand correcto
+            // Check if this hat is in the correct stand
             foreach (HatStandTrigger stand in hatStands)
             {
                 if (hat.name == stand.correctHatName)
                 {
-                    // Verificar si está en el trigger del stand correcto
+                    // Check if it's in the correct stand's trigger
                     Collider[] collidersInTrigger = Physics.OverlapBox(
                         stand.transform.position,
                         stand.GetComponent<Collider>().bounds.size / 2,
@@ -153,12 +153,12 @@ public class CheckHatsOnTouch : MonoBehaviour
                 }
             }
 
-            // Si no está correctamente colocado, resetear posición
+            // If not correctly placed, reset position
             if (!isCorrectlyPlaced)
             {
                 if (initialHatPositions.ContainsKey(hat) && initialHatRotations.ContainsKey(hat))
                 {
-                    // Desactivar temporalmente la física para evitar interferencias
+                    // Temporarily disable physics to avoid interference
                     Rigidbody rb = hat.GetComponent<Rigidbody>();
                     if (rb != null)
                     {
@@ -169,7 +169,7 @@ public class CheckHatsOnTouch : MonoBehaviour
                     hat.transform.position = initialHatPositions[hat];
                     hat.transform.rotation = initialHatRotations[hat];
                     
-                    Debug.Log($"🔄 Sombrero '{hat.name}' reseteado a su posición inicial");
+                    Debug.Log($"🔄 Hat '{hat.name}' reset to initial position");
                 }
             }
         }

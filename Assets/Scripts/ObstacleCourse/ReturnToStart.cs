@@ -12,20 +12,21 @@ public class ReturnToStart : MonoBehaviour
         {
             initialPosition = player.transform.position;
 
-            // Guarda una rotación de 180 grados en Y respecto a la inicial
+            // Save a 180 degree rotation in Y relative to the initial
             initialRotation = Quaternion.Euler(0, 180, 0);
         }
         else
         {
-            Debug.LogError("No se encontró un objeto con el tag 'Player'.");
+            Debug.LogError("No object found with tag 'Player'.");
         }
     }
 
+    // Teleport player back to start position when they fall
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // Registrar la caída en el log antes de teletransportar
+            // Log the fall before teleporting
             if (ObstacleCourseLogger.Instance != null)
             {
                 ObstacleCourseLogger.Instance.LogCaidaYReinicio(other.transform.position);

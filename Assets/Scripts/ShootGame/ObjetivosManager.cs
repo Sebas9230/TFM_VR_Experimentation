@@ -29,7 +29,7 @@ public class ObjetivosManager : MonoBehaviour
     void Start()
     {
         objetivos = GameObject.FindGameObjectsWithTag(tagToFind);
-        Debug.Log("Objetivos encontrados: " + objetivos.Length);
+        Debug.Log("Targets found: " + objetivos.Length);
         PrintAllTaggedObjectNames();
         DisableAllTaggedObjects();
         CrearTexto();
@@ -56,7 +56,7 @@ public class ObjetivosManager : MonoBehaviour
         }
         smthSpawned = true;
         desdeF = false;
-        Debug.Log("Objeto activado: " + obj.name);
+        Debug.Log("Object activated: " + obj.name);
         spawneado = obj;
     }
 
@@ -72,7 +72,7 @@ public class ObjetivosManager : MonoBehaviour
                 File.AppendAllText(path, "Manual despawn\n\n");
             }
         }
-        Debug.Log("Objeto desactivado: " + spawneado.name);
+        Debug.Log("Object deactivated: " + spawneado.name);
     }
 
      public void CrearTexto() {
@@ -81,13 +81,13 @@ public class ObjetivosManager : MonoBehaviour
         try {
             if (!File.Exists(path)) {
                 File.WriteAllText(path, "Reaction time Log Inmersive\n\n");
-                Debug.Log("Log file creada en: " + path);
+                Debug.Log("Log file created at: " + path);
             } else {
-                Debug.Log("Log file ya existe en: " + path);
+                Debug.Log("Log file already exists at: " + path);
             }
         }
         catch (Exception ex) {
-            Debug.LogError("Error al crear el log: " + ex.Message);
+            Debug.LogError("Error creating log: " + ex.Message);
         }
     }
 

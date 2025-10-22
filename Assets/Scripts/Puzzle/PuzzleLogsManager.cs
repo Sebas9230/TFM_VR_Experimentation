@@ -8,9 +8,9 @@ public class PuzzleLogsManager : MonoBehaviour
 {
     public static PuzzleLogsManager Instance;
     
-    [Header("Configuración de Logs")]
+    [Header("Log Configuration")]
     public string nombreArchivoLogs = "puzzle-game";
-    [Tooltip("Ruta donde guardar los logs. Si está vacío, se guarda en Assets/")]
+    [Tooltip("Path where to save logs. If empty, saves in Assets/")]
     public string rutaCustomLogs = "";
     
     private string path;
@@ -41,27 +41,29 @@ public class PuzzleLogsManager : MonoBehaviour
         IniciarJuego();
     }
 
+    // Start the game
     public void IniciarJuego()
     {
         tiempoInicioJuego = Time.time;
-        RegistrarEvento("=== INICIO DEL PUZZLE ===");
-        RegistrarEvento($"Tiempo de inicio: {DateTime.Now}");
-        RegistrarEvento($"Objetivo: Colocar 5 sombreros en sus stands correctos");
+        RegistrarEvento("=== PUZZLE START ===");
+        RegistrarEvento($"Start time: {DateTime.Now}");
+        RegistrarEvento($"Objective: Place 5 hats on their correct stands");
         RegistrarEvento("");
     }
 
+    // Log hat grab
     public void RegistrarAgarreSombrero(string nombreSombrero)
     {
-        // Validar parámetros de entrada
+        // Validate input parameters
         if (string.IsNullOrEmpty(nombreSombrero))
         {
-            Debug.LogWarning($"PuzzleLogsManager: Intento de registrar agarre con sombrero vacío.");
+            Debug.LogWarning($"PuzzleLogsManager: Attempt to log grab with empty hat name.");
             return;
         }
         
         float tiempoActual = Time.time - tiempoInicioJuego;
         string claveUnica = $"AGARRE_{nombreSombrero}";
-        RegistrarEventoConCooldown($"[{tiempoActual:F2}s] AGARRE - Sombrero '{nombreSombrero}' agarrado", claveUnica);
+        RegistrarEventoConCooldown($"[{tiempoActual:F2}s] GRAB - Hat '{nombreSombrero}' grabbed", claveUnica);
         
         if (!tiemposPorSombrero.ContainsKey(nombreSombrero))
         {
@@ -69,38 +71,40 @@ public class PuzzleLogsManager : MonoBehaviour
         }
     }
 
+    // Log hat release
     public void RegistrarSueltaSombrero(string nombreSombrero)
     {
-        // Validar parámetros de entrada
+        // Validate input parameters
         if (string.IsNullOrEmpty(nombreSombrero))
         {
-            Debug.LogWarning($"PuzzleLogsManager: Intento de registrar suelta con sombrero vacío.");
+            Debug.LogWarning($"PuzzleLogsManager: Attempt to log release with empty hat name.");
             return;
         }
         
         float tiempoActual = Time.time - tiempoInicioJuego;
         string claveUnica = $"SUELTA_{nombreSombrero}";
-        RegistrarEventoConCooldown($"[{tiempoActual:F2}s] SUELTA - Sombrero '{nombreSombrero}' soltado", claveUnica);
+        RegistrarEventoConCooldown($"[{tiempoActual:F2}s] RELEASE - Hat '{nombreSombrero}' released", claveUnica);
     }
 
+    // Log correct hat placement
     public void RegistrarColocacionCorrecta(string nombreSombrero, string nombreStand)
     {
-        // Validar parámetros de entrada
+        // Validate input parameters
         if (string.IsNullOrEmpty(nombreSombrero) || string.IsNullOrEmpty(nombreStand))
         {
-            Debug.LogWarning($"PuzzleLogsManager: Intento de registrar colocación correcta con parámetros vacíos. Sombrero: '{nombreSombrero}', Stand: '{nombreStand}'");
+            Debug.LogWarning($"PuzzleLogsManager: Attempt to log correct placement with empty parameters. Hat: '{nombreSombrero}', Stand: '{nombreStand}'");
             return;
         }
         
         float tiempoActual = Time.time - tiempoInicioJuego;
         string claveUnica = $"ACIERTO_{nombreSombrero}_{nombreStand}";
         
-        // Verificar si este evento ya fue registrado recientemente
+        // Check if this event was already logged recently
         if (ultimoLogPorEvento.ContainsKey(claveUnica))
         {
             if (Time.time - ultimoLogPorEvento[claveUnica] < cooldownLogs)
             {
-                return; // Evitar log duplicado
+                return; // Avoid duplicate log
             }
         }
         
@@ -115,14 +119,14 @@ public class PuzzleLogsManager : MonoBehaviour
         }
         intentosPorSombrero[nombreSombrero]++;
 
-        RegistrarEvento($"[{tiempoActual:F2}s] ACIERTO - Sombrero '{nombreSombrero}' colocado correctamente en stand '{nombreStand}'");
-        RegistrarEvento($"    Progreso: {aciertos}/5 sombreros correctos");
-        RegistrarEvento($"    Intentos para este sombrero: {intentosPorSombrero[nombreSombrero]}");
+        RegistrarEvento($"[{tiempoActual:F2}s] CORRECT - Hat '{nombreSombrero}' placed correctly on stand '{nombreStand}'");
+        RegistrarEvento($"    Progress: {aciertos}/5 hats correct");
+        RegistrarEvento($"    Attempts for this hat: {intentosPorSombrero[nombreSombrero]}");
         
         if (tiemposPorSombrero.ContainsKey(nombreSombrero))
         {
             float tiempoParaColocar = tiempoActual - tiemposPorSombrero[nombreSombrero];
-            RegistrarEvento($"    Tiempo desde primer agarre: {tiempoParaColocar:F2}s");
+            RegistrarEvento($"    Time since first grab: {tiempoParaColocar:F2}s");
         }
         RegistrarEvento("");
     }
@@ -159,8 +163,8 @@ public class PuzzleLogsManager : MonoBehaviour
         }
         intentosPorSombrero[nombreSombrero]++;
 
-        RegistrarEvento($"[{tiempoActual:F2}s] ERROR - Sombrero '{nombreSombrero}' colocado incorrectamente en stand '{nombreStand}'");
-        RegistrarEvento($"    Intentos para este sombrero: {intentosPorSombrero[nombreSombrero]}");
+        RegistrarEvento($"[{tiempoActual:F2}s] ERROR - Hat '{nombreSombrero}' placed incorrectly on stand '{nombreStand}'");
+        RegistrarEvento($"    Attempts for this hat: {intentosPorSombrero[nombreSombrero]}");
         RegistrarEvento("");
     }
 
@@ -189,8 +193,8 @@ public class PuzzleLogsManager : MonoBehaviour
         
         aciertos = Mathf.Max(0, aciertos - 1); // Reducir aciertos pero no por debajo de 0
         
-        RegistrarEvento($"[{tiempoActual:F2}s] REMOCION - Sombrero '{nombreSombrero}' removido del stand '{nombreStand}'");
-        RegistrarEvento($"    Progreso: {aciertos}/5 sombreros correctos");
+        RegistrarEvento($"[{tiempoActual:F2}s] REMOVAL - Hat '{nombreSombrero}' removed from stand '{nombreStand}'");
+        RegistrarEvento($"    Progress: {aciertos}/5 hats correct");
         RegistrarEvento("");
     }
 
@@ -205,30 +209,30 @@ public class PuzzleLogsManager : MonoBehaviour
         
         float tiempoActual = Time.time - tiempoInicioJuego;
         string claveUnica = $"PISTA_{nombreSombrero}";
-        RegistrarEventoConCooldown($"[{tiempoActual:F2}s] PISTA - Pista mostrada para sombrero '{nombreSombrero}'", claveUnica);
+        RegistrarEventoConCooldown($"[{tiempoActual:F2}s] CLUE - Clue shown for hat '{nombreSombrero}'", claveUnica);
     }
 
     public void RegistrarCompletarPuzzle()
     {
         float tiempoTotal = Time.time - tiempoInicioJuego;
         
-        RegistrarEvento("=== PUZZLE COMPLETADO ===");
-        RegistrarEvento($"Todos los sombreros colocados correctamente!");
-        RegistrarEvento($"Tiempo total: {tiempoTotal:F2} segundos ({tiempoTotal/60:F1} minutos)");
-        RegistrarEvento($"Estadisticas finales:");
-        RegistrarEvento($"    - Total de intentos: {intentosColocacion}");
-        RegistrarEvento($"    - Aciertos: {aciertos}");
-        RegistrarEvento($"    - Errores: {errores}");
-        RegistrarEvento($"    - Precisión: {(aciertos * 100f / intentosColocacion):F1}%");
-        RegistrarEvento($"    - Promedio de tiempo por acierto: {(tiempoTotal / aciertos):F2}s");
+        RegistrarEvento("=== PUZZLE COMPLETED ===");
+        RegistrarEvento($"All hats placed correctly!");
+        RegistrarEvento($"Total time: {tiempoTotal:F2} seconds ({tiempoTotal/60:F1} minutes)");
+        RegistrarEvento($"Final statistics:");
+        RegistrarEvento($"    - Total attempts: {intentosColocacion}");
+        RegistrarEvento($"    - Correct: {aciertos}");
+        RegistrarEvento($"    - Errors: {errores}");
+        RegistrarEvento($"    - Accuracy: {(aciertos * 100f / intentosColocacion):F1}%");
+        RegistrarEvento($"    - Average time per correct: {(tiempoTotal / aciertos):F2}s");
         
-        RegistrarEvento("\nDetalles por sombrero:");
+        RegistrarEvento("\nDetails per hat:");
         foreach (var kvp in intentosPorSombrero)
         {
-            RegistrarEvento($"    - {kvp.Key}: {kvp.Value} intentos");
+            RegistrarEvento($"    - {kvp.Key}: {kvp.Value} attempts");
         }
         
-        RegistrarEvento($"\nJuego completado el: {DateTime.Now}");
+        RegistrarEvento($"\nGame completed on: {DateTime.Now}");
         RegistrarEvento("=====================================\n");
     }
 
@@ -241,7 +245,7 @@ public class PuzzleLogsManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Error al escribir en el log: {ex.Message}");
+            Debug.LogError($"Error writing to log: {ex.Message}");
         }
     }
     
@@ -264,7 +268,7 @@ public class PuzzleLogsManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Error al escribir en el log con cooldown: {ex.Message}");
+            Debug.LogError($"Error writing to log with cooldown: {ex.Message}");
         }
     }
 
@@ -276,14 +280,14 @@ public class PuzzleLogsManager : MonoBehaviour
         }
         else
         {
-            // Asegurar que la ruta termine con /
+            // Ensure the path ends with /
             string rutaLimpia = rutaCustomLogs.Replace("\\", "/");
             if (!rutaLimpia.EndsWith("/"))
                 rutaLimpia += "/";
                 
             path = rutaLimpia + nombreArchivoLogs + "-log.txt";
             
-            // Crear directorio si no existe
+            // Create directory if it doesn't exist
             string directorio = System.IO.Path.GetDirectoryName(path);
             if (!string.IsNullOrEmpty(directorio) && !Directory.Exists(directorio))
             {
@@ -297,21 +301,21 @@ public class PuzzleLogsManager : MonoBehaviour
         {
             if (!File.Exists(path))
             {
-                File.WriteAllText(path, $"PUZZLE GAME - Log de Actividad\n");
-                File.AppendAllText(path, $"Creado el: {DateTime.Now}\n");
+                File.WriteAllText(path, $"PUZZLE GAME - Activity Log\n");
+                File.AppendAllText(path, $"Created on: {DateTime.Now}\n");
                 File.AppendAllText(path, $"=========================================\n\n");
-                Debug.Log("Puzzle log file creado en: " + path);
+                Debug.Log("Puzzle log file created at: " + path);
             }
             else
             {
-                File.AppendAllText(path, $"\n--- NUEVA SESION ---\n");
-                File.AppendAllText(path, $"Sesión iniciada el: {DateTime.Now}\n\n");
-                Debug.Log("Nueva sesión agregada al log existente");
+                File.AppendAllText(path, $"\n--- NEW SESSION ---\n");
+                File.AppendAllText(path, $"Session started on: {DateTime.Now}\n\n");
+                Debug.Log("New session added to existing log");
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error al crear el puzzle log: " + ex.Message);
+            Debug.LogError("Error creating puzzle log: " + ex.Message);
         }
     }
 

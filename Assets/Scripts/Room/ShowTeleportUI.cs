@@ -14,12 +14,12 @@ public class ShowTeleportUI : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.GetComponent<XRController>())
         {
-            // Oculta todos primero
+            // Hide all first
             if (uiTeleportA) uiTeleportA.SetActive(false);
             if (uiTeleportB) uiTeleportB.SetActive(false);
             if (uiTeleportC) uiTeleportC.SetActive(false);
 
-            // Muestra el canvas correspondiente
+            // Show the corresponding canvas
             switch (teleportType)
             {
                 case TeleportType.A:
@@ -39,7 +39,7 @@ public class ShowTeleportUI : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.GetComponent<XRController>())
         {
-            // Oculta solo el UI correspondiente al tipo de teleport
+            // Hide only the UI corresponding to the teleport type
             switch (teleportType)
             {
                 case TeleportType.A:

@@ -22,16 +22,17 @@ public class Countdown : MonoBehaviour
             // GameObject.FindWithTag("Tiempo").GetComponent<Text>().text = "Tiempo Restante   " + tiempo;
             countDownText.text = "Time Left " + tiempo;
         }
-        Debug.Log("Fin del tiempo");
+        Debug.Log("Time finished");
         FinishGame();
     }
 
+    // Finish the game and load game over scene
     void FinishGame()
     {
         if (SceneTracker.Instance != null)
         {
             SceneTracker.Instance.PreviousScene = SceneManager.GetActiveScene().name;
-            // Guardar el score del shooter
+            // Save shooter score
             if (ObjetivosManager.Instance != null)
             {
                 SceneTracker.Instance.SetShooterResults(ObjetivosManager.Instance.puntos);

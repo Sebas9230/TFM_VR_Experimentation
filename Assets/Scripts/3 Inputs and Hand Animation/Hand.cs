@@ -21,6 +21,7 @@ public class Hand :  MonoBehaviour
         InitializeHand();
     }
 
+    // Initialize hand tracking and animation
     private void InitializeHand()
     {
         List<InputDevice> devices = new List<InputDevice>();
@@ -54,9 +55,10 @@ public class Hand :  MonoBehaviour
         }
     }
 
+    // Update hand animation based on controller input
     private void UpdateHand()
     {
-        //This will get the value for our trigger from the target device and output a flaot into triggerValue
+        // Get trigger value from the target device and apply to hand animation
         if (_targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
         {
             _handAnimator.SetFloat("Trigger", triggerValue);
@@ -65,7 +67,7 @@ public class Hand :  MonoBehaviour
         {
             _handAnimator.SetFloat("Trigger", 0);
         }
-        //This will get the value for our grip from the target device and output a flaot into gripValue
+        // Get grip value from the target device and apply to hand animation
         if (_targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         {
             _handAnimator.SetFloat("Grip", gripValue);

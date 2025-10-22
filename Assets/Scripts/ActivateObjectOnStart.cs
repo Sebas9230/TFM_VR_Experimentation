@@ -7,37 +7,38 @@ public class ActivateObjectOnStart : MonoBehaviour
         string objectName = PlayerPrefs.GetString("ObjectToActivate", "");
         string controllerName = PlayerPrefs.GetString("ControllerToActivate", "");
 
-        // Activar el objeto general (como V1_Basic_Version)
+        // Activate the general object (like V1_Basic_Version)
         if (!string.IsNullOrEmpty(objectName))
         {
             GameObject objToActivate = FindInScene(objectName);
             if (objToActivate != null)
             {
                 objToActivate.SetActive(true);
-                Debug.Log($"Activado objeto: {objectName}");
+                Debug.Log($"Activated object: {objectName}");
             }
             else
             {
-                Debug.LogWarning($"No se encontró el objeto: {objectName}");
+                Debug.LogWarning($"Object not found: {objectName}");
             }
         }
 
-        // Activar específicamente el controlador, como Right Controller
+        // Activate specifically the controller, like Right Controller
         if (!string.IsNullOrEmpty(controllerName))
         {
             GameObject controllerToActivate = FindInScene(controllerName);
             if (controllerToActivate != null)
             {
                 controllerToActivate.SetActive(true);
-                Debug.Log($"Activado controlador: {controllerName}");
+                Debug.Log($"Activated controller: {controllerName}");
             }
             else
             {
-                Debug.LogWarning($"No se encontró el controlador: {controllerName}");
+                Debug.LogWarning($"Controller not found: {controllerName}");
             }
         }
     }
 
+    // Find a GameObject in the scene by name
     GameObject FindInScene(string name)
     {
         GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();

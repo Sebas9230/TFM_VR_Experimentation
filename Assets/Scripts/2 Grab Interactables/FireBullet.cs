@@ -9,6 +9,8 @@ public class FireBullet : MonoBehaviour
     public Transform frontOfGun;
  
     public static event Action GunFired;
+    
+    // Fire a bullet from the gun
     public void Fire()
     {
         GetComponent<AudioSource>().Play();

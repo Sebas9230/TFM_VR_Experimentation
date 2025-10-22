@@ -8,23 +8,23 @@ public class FuncionamientoBalas : MonoBehaviour
     public float nacimiento;
  
     void OnEnable() {
-        nacimiento = Time.time; // guardo el tiempo de nacimiento de la bala
+        nacimiento = Time.time; // Save the bullet birth time
     }
     void Update() {
-        if(Time.time > nacimiento + vida) { // si el tiempo actual es mayor al tiempo de nacimiento más el tiempo de vida
-            gameObject.SetActive(false); // desactivo la bala
+        if(Time.time > nacimiento + vida) { // If current time is greater than birth time plus lifetime
+            gameObject.SetActive(false); // Deactivate the bullet
         }
     }
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Disparable")) {
             ObjetivosManager.Instance.fuera = true;
             ObjetivosManager.Instance.Despawn();
-            Debug.Log("Objetivo destruido");
+            Debug.Log("Target destroyed");
             ObjetivosManager.Instance.fuera = false;
             gameObject.SetActive(false); 
-            Debug.Log("Bala destruida");
+            Debug.Log("Bullet destroyed");
             ObjetivosManager.Instance.puntos ++;
-            Debug.Log("Puntos: " + ObjetivosManager.Instance.puntos);
+            Debug.Log("Points: " + ObjetivosManager.Instance.puntos);
         }
     }
 }

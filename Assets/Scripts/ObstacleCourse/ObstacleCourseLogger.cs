@@ -27,6 +27,7 @@ public class ObstacleCourseLogger : MonoBehaviour
         LogInicioJuego();
     }
 
+    // Create the log file
     public void CrearArchivoLog()
     {
         path = Application.dataPath + "/" + nombreArchivoLogs + "-log.txt";
@@ -42,19 +43,20 @@ public class ObstacleCourseLogger : MonoBehaviour
                 header += "=====================================\n\n";
                 
                 File.WriteAllText(path, header);
-                Debug.Log("Log file creado en: " + path);
+                Debug.Log("Log file created at: " + path);
             }
             else
             {
-                Debug.Log("Log file ya existe en: " + path);
+                Debug.Log("Log file already exists at: " + path);
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error al crear el log: " + ex.Message);
+            Debug.LogError("Error creating log: " + ex.Message);
         }
     }
 
+    // Log game start
     public void LogInicioJuego()
     {
         tiempoInicio = Time.time;
@@ -64,6 +66,7 @@ public class ObstacleCourseLogger : MonoBehaviour
         AppendToLog(logEntry);
     }
 
+    // Log player fall and reset
     public void LogCaidaYReinicio(Vector3 posicionCaida)
     {
         numeroReiniciosPorCaida++;
@@ -77,9 +80,10 @@ public class ObstacleCourseLogger : MonoBehaviour
         AppendToLog(logEntry);
     }
 
+    // Log course completion
     public void LogCompletarCurso(float tiempoFinal)
     {
-        int totalIntentos = numeroReiniciosPorCaida + 1; // Las caídas + el intento exitoso
+        int totalIntentos = numeroReiniciosPorCaida + 1; // Falls + successful attempt
         float successRate = (1.0f / totalIntentos) * 100;
         
         string logEntry = $"[{DateTime.Now:HH:mm:ss}] COURSE COMPLETED!\n";
@@ -92,12 +96,14 @@ public class ObstacleCourseLogger : MonoBehaviour
         AppendToLog(logEntry);
     }
 
+    // Log custom event
     public void LogEventoPersonalizado(string evento)
     {
         string logEntry = $"[{DateTime.Now:HH:mm:ss}] CUSTOM EVENT: {evento}\n";
         AppendToLog(logEntry);
     }
 
+    // Append content to the log file
     private void AppendToLog(string content)
     {
         try
@@ -110,10 +116,11 @@ public class ObstacleCourseLogger : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error al escribir en el log: " + ex.Message);
+            Debug.LogError("Error writing to log: " + ex.Message);
         }
     }
 
+    // Reset counters
     public void ReiniciarContadores()
     {
         numeroIntentos = 0;

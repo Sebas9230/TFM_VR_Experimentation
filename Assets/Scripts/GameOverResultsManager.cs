@@ -4,12 +4,12 @@ using TMPro;
 public class GameOverResultsManager : MonoBehaviour
 {
     [Header("UI Configuration")]
-    [Tooltip("TextMesh component donde se mostrarán los resultados")]
+    [Tooltip("TextMesh component where results will be displayed")]
     public TextMeshProUGUI resultText;
     
     void Start()
     {
-        // Si no se asigna un TextMesh, intentar encontrarlo en el mismo GameObject
+        // If no TextMesh is assigned, try to find one in the same GameObject
         if (resultText == null)
         {
             resultText = GetComponent<TextMeshProUGUI>();
@@ -17,18 +17,19 @@ public class GameOverResultsManager : MonoBehaviour
         
         if (resultText == null)
         {
-            Debug.LogError("GameOverResultsManager: No se encontró un TextMeshProUGUI. Asigna uno en el inspector o coloca este script en un GameObject con TextMeshProUGUI.");
+            Debug.LogError("GameOverResultsManager: No TextMeshProUGUI found. Assign one in the inspector or place this script on a GameObject with TextMeshProUGUI.");
             return;
         }
         
         DisplayResults();
     }
     
+    // Display game results based on the previous scene
     void DisplayResults()
     {
         if (SceneTracker.Instance == null)
         {
-            resultText.text = "Error: No se pudo obtener información de la escena anterior";
+            resultText.text = "Error: Could not get information from previous scene";
             return;
         }
         
@@ -54,11 +55,11 @@ public class GameOverResultsManager : MonoBehaviour
                 break;
                 
             default:
-                results = $"Escena no reconocida: {previousScene}";
+                results = $"Unrecognized scene: {previousScene}";
                 break;
         }
         
         resultText.text = results;
-        Debug.Log($"GameOverResultsManager: Mostrando resultados para {previousScene} - {results}");
+        Debug.Log($"GameOverResultsManager: Showing results for {previousScene} - {results}");
     }
 } 

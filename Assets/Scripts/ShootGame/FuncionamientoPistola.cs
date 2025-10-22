@@ -30,6 +30,7 @@ public class FuncionamientoPistola : MonoBehaviour
             disparado = false;
         }
     }
+    // Fire a bullet from the gun
     public void Shoot()
     {
         Debug.Log("Shoot");
@@ -41,9 +42,10 @@ public class FuncionamientoPistola : MonoBehaviour
         
     }
 
-    void Puntaje() { // función para mostrar el puntaje en pantalla
-        // GameObject.FindObjectOfType<UnityEngine.UI.Text>().text = "Puntuación  " + ObjetivosManager.Instance.puntos;
-        // GameObject.FindWithTag("Score").GetComponent<Text>().text = "Puntuación " + ObjetivosManager.Instance.puntos;
+    // Function to display score on screen
+    void Puntaje() {
+        // GameObject.FindObjectOfType<UnityEngine.UI.Text>().text = "Score  " + ObjetivosManager.Instance.puntos;
+        // GameObject.FindWithTag("Score").GetComponent<Text>().text = "Score " + ObjetivosManager.Instance.puntos;
         scoreText.text = "Score " + ObjetivosManager.Instance.puntos;
     }
 }

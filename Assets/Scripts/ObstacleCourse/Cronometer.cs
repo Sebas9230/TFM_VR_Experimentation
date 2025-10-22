@@ -18,38 +18,41 @@ public class Cronometer : MonoBehaviour
         }
     }
 
+    // Stop the timer and log course completion
     public void DetenerCronometro()
     {
         contando = false;
         
-        // Registrar la finalización del curso en el log
+        // Log course completion
         if (ObstacleCourseLogger.Instance != null)
         {
             ObstacleCourseLogger.Instance.LogCompletarCurso(tiempo);
         }
         
-        // Guardar los resultados en SceneTracker
+        // Save results in SceneTracker
         if (SceneTracker.Instance != null && ObstacleCourseLogger.Instance != null)
         {
-            // Calcular la tasa de éxito
+            // Calculate success rate
             int totalIntentos = ObstacleCourseLogger.Instance.numeroReiniciosPorCaida + 1;
             float successRate = (1.0f / totalIntentos) * 100;
             SceneTracker.Instance.SetObstacleCourseResults(tiempo, successRate);
         }
     }
 
+    // Restart the timer
     public void ReiniciarCronometro()
     {
         tiempo = 0f;
         contando = true;
         
-        // Registrar el reinicio del juego en el log
+        // Log game restart
         if (ObstacleCourseLogger.Instance != null)
         {
             ObstacleCourseLogger.Instance.LogInicioJuego();
         }
     }
 
+    // Get the final time
     public float ObtenerTiempoFinal()
     {
         return tiempo;

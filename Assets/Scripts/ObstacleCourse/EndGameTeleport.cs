@@ -10,10 +10,10 @@ public class EndGameTeleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Asegurarse de que el objeto que entra es el XR Rig o un Controlador VR
+        // Make sure the object entering is the XR Rig or a VR Controller
         if ((other.CompareTag("Player") || other.GetComponent<XRController>()) && !isTeleporting)
         {
-            // Detener cronómetro y registrar finalización
+            // Stop timer and log completion
             Cronometer cronometer = FindObjectOfType<Cronometer>();
             if (cronometer != null)
             {
@@ -22,11 +22,12 @@ public class EndGameTeleport : MonoBehaviour
             
             if (!string.IsNullOrEmpty(sceneToLoad))
             {
-                StartCoroutine(TeleportAfterDelay(1f)); // Espera 1 segundo antes de teletransportar
+                StartCoroutine(TeleportAfterDelay(1f)); // Wait 1 second before teleporting
             }
         }
     }
 
+// Teleport to the specified scene after a delay
 private IEnumerator TeleportAfterDelay(float delay)
 {
     isTeleporting = true;

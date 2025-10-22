@@ -15,7 +15,7 @@ public class InputReader : MonoBehaviour
         InitializeInputReader();
     }
 
-    //This will try to initialize the InputReader by getting all the devices and printing them to the debugger.
+    // Initialize the InputReader by getting all devices and printing them to the debugger
     void InitializeInputReader()
     {
 

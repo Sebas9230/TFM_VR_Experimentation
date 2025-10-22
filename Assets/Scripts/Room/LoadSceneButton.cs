@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 public class LoadSceneButton : MonoBehaviour
 {
     public string sceneName;
-    public string objectToActivateInScene;    // Ej: "V1_Basic_Version"
-    public string controllerToActivateInScene; // Ej: "Right Controller"
+    public string objectToActivateInScene;    // Ex: "V1_Basic_Version"
+    public string controllerToActivateInScene; // Ex: "Right Controller"
 
+    // Load the specified scene with object and controller activation settings
     public void LoadScene()
     {
         if (!string.IsNullOrEmpty(sceneName))

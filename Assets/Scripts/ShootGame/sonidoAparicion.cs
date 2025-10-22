@@ -11,7 +11,7 @@ public class sonidoAparicion : MonoBehaviour
     }
     IEnumerator PlayEntrance() {
         GetComponent<AudioSource>().Play();
-        Debug.Log("Sonido de aparicion");
+        Debug.Log("Appearance sound");
         yield return null;
     }
 }
