@@ -14,29 +14,27 @@ Without this configuration, the default SteamVR bindings **will not trigger** th
 ## 📁 Binding File
 
 The binding configuration file is located at:
-TFM_VR_Experimentation/Assets/InputActions/Binding/TFM_Final [Testing] configuration for Vive Controller.json
+TFM_VR_Experimentation/Assets/InputActions/Binding/tfm_final_exe_vive_controller_My TFM_Final [Testing] configuration for Vive Controller.json
 
 
 ## Follow these steps to apply the correct controller configuration:
 
 1. Connect your **HTC Vive headset and controllers**.
-2. Launch **SteamVR** and ensure all devices are detected.
-3. Start your Unity application (in **Play Mode** or a **standalone build**).
-4. Open the **SteamVR Dashboard** (press the system button on a controller).
-5. Navigate to:  
-   `Devices → Controller Settings → Manage Controller Bindings`
-6. Select your Unity application from the list.
-7. Click **"Edit"** or **"Create New Binding"**.
-8. In the binding editor:
-   - Click **"Browse"** or **"Import"**.
-   - Navigate to the file path:
-     ```
-     TFM_VR_Experimentation/Assets/InputActions/Binding/TFM_Final [Testing] configuration for Vive Controller.json
-     ```
-   - Select the file and confirm.
-9. Click **"Save Personal Binding"** to apply it.
-   - *(Optional: Click "Replace Default Binding" to make it the default on your system.)*
-10. Close the bindings window.
+2. **Open Unity Editor** with your project loaded.
+3. In the Unity menu bar, go to **Window → SteamVR Input**.
+
+![SteamVR Input Window](Assets/Images/ReadmeImages/Step1_Controller.PNG)
+
+4. In the SteamVR Input window, click **"Open bindings"**.
+5. In the bindings editor:
+   - Click **"Edit"** next to your controller configuration.
+   - Navigate to the **trackpad/touchpad** section.
+   - Configure the touchpad mappings as needed:
+     - **Left trackpad**: Movement input (`/actions/default/in/touchpad`)
+
+6. Click **"Save Personal Binding"** to apply the configuration.
+
+
 
 ---
 
